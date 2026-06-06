@@ -716,8 +716,8 @@ function renderMatch() {
   $("matchView").classList.toggle("hidden", !match);
   if (!match) return;
 
-  $("teamAName").textContent = teamName(match, "A");
-  $("teamBName").textContent = teamName(match, "B");
+  $("teamAName").textContent = "Nosotros";
+  $("teamBName").textContent = "Ellos";
   $("scoreA").textContent = match.scoreA;
   $("scoreB").textContent = match.scoreB;
   $("nextRound").textContent = nextRoundLabel(match.nextRoundType);

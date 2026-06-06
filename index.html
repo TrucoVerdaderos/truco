@@ -17,8 +17,10 @@
       </div>
     </div>
     <div class="header-actions">
-      <span id="roleBadge" class="badge">Visitante</span>
-      <button id="refreshBtn" class="btn secondary">Actualizar</button>
+      <span id="roleBadge" class="visually-hidden">Visitante</span>
+      <button id="refreshBtn" class="visually-hidden" type="button">Actualizar</button>
+      <button class="icon-btn" type="button" aria-label="Jugadores">👥</button>
+      <button class="icon-btn" type="button" aria-label="Ajustes" data-tab-jump="admin">⚙</button>
     </div>
   </header>
 
@@ -50,11 +52,10 @@
     </section>
 
     <nav class="tabs" aria-label="Secciones">
-      <button class="tab active" data-tab="partido">Partido</button>
-      <button class="tab" data-tab="ranking">Ranking</button>
-      <button class="tab" data-tab="manoamano">Mano a mano</button>
-      <button class="tab" data-tab="historial">Historial</button>
-      <button id="adminTabBtn" class="tab admin-only" data-tab="admin">Admin</button>
+      <button class="tab active" data-tab="partido"><span class="tab-ico">⌂</span><span>Inicio</span></button>
+      <button class="tab" data-tab="ranking"><span class="tab-ico">♜</span><span>Ranking</span></button>
+      <button class="tab" data-tab="historial"><span class="tab-ico">↺</span><span>Historial</span></button>
+      <button id="adminTabBtn" class="tab" data-tab="admin"><span class="tab-ico">⚙</span><span>Ajustes</span></button>
     </nav>
 
     <section id="partido" class="tab-panel active">
@@ -71,8 +72,8 @@
             <div id="scoreA" class="score">0</div>
             <div id="teamAPlayers" class="chips"></div>
             <div class="admin-controls admin-only">
-              <button class="btn" data-quick="A:1">+1</button>
               <button class="btn ghost" data-quick="A:-1">-1</button>
+              <button class="btn" data-quick="A:1">+1</button>
             </div>
           </article>
 
@@ -81,8 +82,8 @@
             <h2 id="nextRound">Redonda</h2>
             <p id="roundHint" class="muted"></p>
             <div class="admin-controls admin-only stack">
+              <button id="nextRoundBtn" class="btn main-next">Siguiente ronda</button>
               <button id="loadPicaBtn" class="btn accent">Cargar pica pica</button>
-              <button id="nextRoundBtn" class="btn">Siguiente ronda</button>
               <button id="undoBtn" class="btn secondary">Deshacer última carga</button>
               <button id="correctBtn" class="btn secondary">Corregir marcador</button>
               <button id="finishBtn" class="btn danger">Finalizar partido</button>
@@ -95,8 +96,8 @@
             <div id="scoreB" class="score">0</div>
             <div id="teamBPlayers" class="chips"></div>
             <div class="admin-controls admin-only">
-              <button class="btn" data-quick="B:1">+1</button>
               <button class="btn ghost" data-quick="B:-1">-1</button>
+              <button class="btn" data-quick="B:1">+1</button>
             </div>
           </article>
         </div>
@@ -142,6 +143,8 @@
             <button class="btn secondary full-btn" type="button" data-tab-jump="historial">Ver historial completo</button>
           </section>
         </div>
+
+
       </div>
     </section>
 
