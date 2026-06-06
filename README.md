@@ -1,5 +1,7 @@
 # Truco 3 vs 3
 
-Versión con formato oscuro tipo app, marcador principal, pica pica, ranking e historial.
+Contador y ranking para jugar al truco 3 vs 3 entre amigos.
 
-Subir a GitHub Pages reemplazando `index.html`, `styles.css`, `app.js` y `README.md`. No reemplazar `data.json` si querés conservar los datos.
+## Versión
+
+v9 - El pica pica muestra los puntos acumulados de cada mano a mano en la partida actual.

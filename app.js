@@ -226,6 +226,7 @@ async function persistData(message = "Actualizar datos del truco") {
     localStorage.setItem(STORAGE_LOCAL_DB, JSON.stringify(db));
     setSync("Guardado", "good");
     render();
+    showToast("Guardado en GitHub.");
   } catch (error) {
     console.error(error);
     setSync("Error", "bad");
@@ -709,6 +710,23 @@ function renderStatus() {
   }
 }
 
+function getCurrentMatchPicaScore(match, pair) {
+  const totals = { a: 0, b: 0 };
+  for (const round of match.rounds || []) {
+    if (round.type !== "pica-pica") continue;
+    for (const duel of round.duels || []) {
+      if (duel.playerA === pair.a && duel.playerB === pair.b) {
+        totals.a += Number(duel.pointsA) || 0;
+        totals.b += Number(duel.pointsB) || 0;
+      } else if (duel.playerA === pair.b && duel.playerB === pair.a) {
+        totals.a += Number(duel.pointsB) || 0;
+        totals.b += Number(duel.pointsA) || 0;
+      }
+    }
+  }
+  return totals;
+}
+
 function renderMatch() {
   const match = db.activeMatch;
   $("noMatch").classList.toggle("hidden", Boolean(match));
@@ -737,21 +755,24 @@ function renderMatch() {
   $("nextRoundBtn").disabled = match.nextRoundType === "finalizado" || (match.nextRoundType === "pica-pica" && !match.picaLoadedInTurn);
   $("finishBtn").disabled = match.scoreA === match.scoreB;
 
-  $("picaPairs").innerHTML = match.picaPairs.map((pair, index) => `
-    <div class="list-item pica-match">
-      <div class="pica-player pica-player-a">
-        <span class="avatar avatar-a">${playerInitial(pair.a)}</span>
-        <div><strong>${playerName(pair.a)}</strong></div>
+  $("picaPairs").innerHTML = match.picaPairs.map((pair, index) => {
+    const picaScore = getCurrentMatchPicaScore(match, pair);
+    return `
+      <div class="list-item pica-match">
+        <div class="pica-player pica-player-a">
+          <span class="avatar avatar-a">${playerInitial(pair.a)}</span>
+          <div><strong>${playerName(pair.a)}</strong></div>
+        </div>
+        <div class="pica-scoreline">
+          <span>${picaScore.a}</span><em>vs</em><span>${picaScore.b}</span>
+        </div>
+        <div class="pica-player pica-player-b">
+          <div><strong>${playerName(pair.b)}</strong></div>
+          <span class="avatar avatar-b">${playerInitial(pair.b)}</span>
+        </div>
       </div>
-      <div class="pica-scoreline">
-        <span>0</span><em>vs</em><span>0</span>
-      </div>
-      <div class="pica-player pica-player-b">
-        <div><strong>${playerName(pair.b)}</strong></div>
-        <span class="avatar avatar-b">${playerInitial(pair.b)}</span>
-      </div>
-    </div>
-  `).join("");
+    `;
+  }).join("");
 
   const recent = [...(match.rounds || [])].slice(-6).reverse();
   $("roundLog").innerHTML = recent.length ? recent.map(roundLogHtml).join("") : `<p class="muted">Todavía no se cargaron puntos.</p>`;
