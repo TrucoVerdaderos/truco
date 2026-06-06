@@ -1,6 +1,6 @@
 {
-  "version": 54,
-  "updatedAt": "2026-06-06T04:22:41.607Z",
+  "version": 55,
+  "updatedAt": "2026-06-06T04:22:53.215Z",
   "players": {
     "nico": {
       "id": "nico",
@@ -79,11 +79,82 @@
       }
     ],
     "scoreA": 0,
-    "scoreB": 0,
+    "scoreB": 5,
     "nextRoundType": "redonda",
     "hasReachedFive": false,
     "picaLoadedInTurn": false,
-    "rounds": []
+    "rounds": [
+      {
+        "id": "64ac6677-9641-4ec7-a7f8-6e42710363fb",
+        "type": "redonda",
+        "createdAt": "2026-06-06T04:22:52.460Z",
+        "team": "B",
+        "points": 1,
+        "previous": {
+          "scoreA": 0,
+          "scoreB": 0,
+          "nextRoundType": "redonda",
+          "hasReachedFive": false,
+          "picaLoadedInTurn": false
+        }
+      },
+      {
+        "id": "b93e2854-2150-4550-a3ae-0443558a8a12",
+        "type": "redonda",
+        "createdAt": "2026-06-06T04:22:52.659Z",
+        "team": "B",
+        "points": 1,
+        "previous": {
+          "scoreA": 0,
+          "scoreB": 1,
+          "nextRoundType": "redonda",
+          "hasReachedFive": false,
+          "picaLoadedInTurn": false
+        }
+      },
+      {
+        "id": "80bbb1fa-4167-4354-a7a5-9add62d642c7",
+        "type": "redonda",
+        "createdAt": "2026-06-06T04:22:52.829Z",
+        "team": "B",
+        "points": 1,
+        "previous": {
+          "scoreA": 0,
+          "scoreB": 2,
+          "nextRoundType": "redonda",
+          "hasReachedFive": false,
+          "picaLoadedInTurn": false
+        }
+      },
+      {
+        "id": "b31cc17b-5335-4308-b7da-8c89ecc00860",
+        "type": "redonda",
+        "createdAt": "2026-06-06T04:22:53.029Z",
+        "team": "B",
+        "points": 1,
+        "previous": {
+          "scoreA": 0,
+          "scoreB": 3,
+          "nextRoundType": "redonda",
+          "hasReachedFive": false,
+          "picaLoadedInTurn": false
+        }
+      },
+      {
+        "id": "3792e6d7-eede-4874-b03e-2bb1e22cc669",
+        "type": "redonda",
+        "createdAt": "2026-06-06T04:22:53.198Z",
+        "team": "B",
+        "points": 1,
+        "previous": {
+          "scoreA": 0,
+          "scoreB": 4,
+          "nextRoundType": "redonda",
+          "hasReachedFive": false,
+          "picaLoadedInTurn": false
+        }
+      }
+    ]
   },
   "matches": [
     {
