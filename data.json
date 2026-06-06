@@ -1,6 +1,6 @@
 {
-  "version": 5,
-  "updatedAt": "2026-06-06T01:41:47.275Z",
+  "version": 6,
+  "updatedAt": "2026-06-06T01:41:49.136Z",
   "players": {
     "nico": {
       "id": "nico",
@@ -78,7 +78,7 @@
         "b": "rama"
       }
     ],
-    "scoreA": 3,
+    "scoreA": 4,
     "scoreB": 0,
     "nextRoundType": "redonda",
     "hasReachedFive": false,
@@ -120,6 +120,20 @@
         "points": 1,
         "previous": {
           "scoreA": 2,
+          "scoreB": 0,
+          "nextRoundType": "redonda",
+          "hasReachedFive": false,
+          "picaLoadedInTurn": false
+        }
+      },
+      {
+        "id": "cccd406b-1cfe-4633-9861-d79cf925dafc",
+        "type": "redonda",
+        "createdAt": "2026-06-06T01:41:48.654Z",
+        "team": "A",
+        "points": 1,
+        "previous": {
+          "scoreA": 3,
           "scoreB": 0,
           "nextRoundType": "redonda",
           "hasReachedFive": false,
