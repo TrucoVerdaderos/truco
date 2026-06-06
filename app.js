@@ -854,7 +854,7 @@ function renderRanking() {
   $("rankingRows").innerHTML = rows.map((p, index) => `
     <tr>
       <td>${index + 1}</td>
-      <td><span class="avatar ${teamAccentClass(p.id)}">${playerInitial(p.id)}</span> ${p.name}</td>
+      <td>${p.name}</td>
       <td><strong>${Math.round(p.rating)}</strong></td>
       <td>${p.played}</td>
       <td>${p.wins}</td>
@@ -866,7 +866,7 @@ function renderRanking() {
     $("miniRankingRows").innerHTML = rows.map((p, index) => `
       <tr>
         <td>${index + 1}</td>
-        <td><span class="avatar ${teamAccentClass(p.id)}">${playerInitial(p.id)}</span> ${p.name}</td>
+        <td>${p.name}</td>
         <td>${p.played}</td>
         <td><strong>${Math.round(p.rating)}</strong></td>
       </tr>
