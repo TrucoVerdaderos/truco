@@ -409,8 +409,8 @@ function openPicaDialog() {
     row.className = "pica-row";
     row.innerHTML = `
       <strong>${playerName(pair.a)}</strong>
-      <input id="picaA${index}" type="number" min="0" step="1" value="0" aria-label="Puntos ${playerName(pair.a)}">
-      <input id="picaB${index}" type="number" min="0" step="1" value="0" aria-label="Puntos ${playerName(pair.b)}">
+      <input id="picaA${index}" type="number" min="0" step="1" aria-label="Puntos ${playerName(pair.a)}">
+      <input id="picaB${index}" type="number" min="0" step="1" aria-label="Puntos ${playerName(pair.b)}">
       <strong>${playerName(pair.b)}</strong>
     `;
     wrap.appendChild(row);
