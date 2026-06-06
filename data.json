@@ -1,6 +1,6 @@
 {
-  "version": 46,
-  "updatedAt": "2026-06-06T04:14:03.154Z",
+  "version": 47,
+  "updatedAt": "2026-06-06T04:14:06.379Z",
   "players": {
     "nico": {
       "id": "nico",
@@ -79,7 +79,7 @@
       }
     ],
     "scoreA": 6,
-    "scoreB": 5,
+    "scoreB": 9,
     "nextRoundType": "redonda",
     "hasReachedFive": true,
     "picaLoadedInTurn": false,
@@ -244,6 +244,62 @@
           "nextRoundType": "pica-pica",
           "hasReachedFive": true,
           "picaLoadedInTurn": true
+        }
+      },
+      {
+        "id": "8f01ae7c-942a-4294-8d25-eed84a76c78f",
+        "type": "redonda",
+        "createdAt": "2026-06-06T04:14:05.759Z",
+        "team": "B",
+        "points": 1,
+        "previous": {
+          "scoreA": 6,
+          "scoreB": 5,
+          "nextRoundType": "redonda",
+          "hasReachedFive": true,
+          "picaLoadedInTurn": false
+        }
+      },
+      {
+        "id": "afceb935-f950-4c4c-bd4a-9ca842048a3c",
+        "type": "redonda",
+        "createdAt": "2026-06-06T04:14:05.948Z",
+        "team": "B",
+        "points": 1,
+        "previous": {
+          "scoreA": 6,
+          "scoreB": 6,
+          "nextRoundType": "redonda",
+          "hasReachedFive": true,
+          "picaLoadedInTurn": false
+        }
+      },
+      {
+        "id": "c0182cfc-6c35-4023-960b-abbb84bd5eea",
+        "type": "redonda",
+        "createdAt": "2026-06-06T04:14:06.123Z",
+        "team": "B",
+        "points": 1,
+        "previous": {
+          "scoreA": 6,
+          "scoreB": 7,
+          "nextRoundType": "redonda",
+          "hasReachedFive": true,
+          "picaLoadedInTurn": false
+        }
+      },
+      {
+        "id": "08b1aff3-7ddc-460c-8916-aa0c0d66b581",
+        "type": "redonda",
+        "createdAt": "2026-06-06T04:14:06.308Z",
+        "team": "B",
+        "points": 1,
+        "previous": {
+          "scoreA": 6,
+          "scoreB": 8,
+          "nextRoundType": "redonda",
+          "hasReachedFive": true,
+          "picaLoadedInTurn": false
         }
       }
     ]
