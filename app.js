@@ -152,6 +152,11 @@ function normalizeData(input) {
   next.matches = Array.isArray(next.matches) ? next.matches : [];
   next.headToHead = next.headToHead || {};
   next.activeMatch = next.activeMatch || null;
+  if (next.activeMatch) {
+    next.activeMatch.rounds = Array.isArray(next.activeMatch.rounds) ? next.activeMatch.rounds : [];
+    next.activeMatch.picaLoadedInTurn = Boolean(next.activeMatch.picaLoadedInTurn);
+    next.activeMatch.nextRoundType = next.activeMatch.nextRoundType || "redonda";
+  }
   next.version = Number.isFinite(Number(next.version)) ? Number(next.version) : 1;
   next.updatedAt = next.updatedAt || new Date().toISOString();
   pruneOldMatches(next);
@@ -265,7 +270,8 @@ function createSnapshot(match) {
     scoreA: match.scoreA,
     scoreB: match.scoreB,
     nextRoundType: match.nextRoundType,
-    hasReachedFive: Boolean(match.hasReachedFive)
+    hasReachedFive: Boolean(match.hasReachedFive),
+    picaLoadedInTurn: Boolean(match.picaLoadedInTurn)
   };
 }
 
@@ -274,29 +280,50 @@ function restoreSnapshot(match, snapshot) {
   match.scoreB = snapshot.scoreB;
   match.nextRoundType = snapshot.nextRoundType;
   match.hasReachedFive = Boolean(snapshot.hasReachedFive);
+  match.picaLoadedInTurn = Boolean(snapshot.picaLoadedInTurn);
 }
 
-function advanceAfterRound(match, roundType) {
+function calculateNextRoundType(match, currentRoundType) {
   const max = getMaxScore(match);
-  if (max >= 30) {
-    match.nextRoundType = "finalizado";
+  if (max >= 30) return "finalizado";
+  if (max >= 25) return "redonda";
+  if (currentRoundType === "pica-pica") return "redonda";
+  if (max >= 5) return "pica-pica";
+  return "redonda";
+}
+
+function goToNextRound() {
+  const match = db.activeMatch;
+  if (!match) return;
+
+  if (match.nextRoundType === "finalizado") {
+    showToast("El partido ya puede finalizarse.");
     return;
   }
-  if (max >= 25) {
-    match.nextRoundType = "redonda";
+
+  if (match.nextRoundType === "pica-pica" && !match.picaLoadedInTurn) {
+    showToast("Primero cargá el pica pica.");
     return;
   }
-  if (roundType === "pica-pica") {
-    match.hasReachedFive = true;
-    match.nextRoundType = "redonda";
-    return;
-  }
-  if (max >= 5) {
-    match.hasReachedFive = true;
-    match.nextRoundType = "pica-pica";
-    return;
-  }
-  match.nextRoundType = "redonda";
+
+  const previous = createSnapshot(match);
+  const from = match.nextRoundType;
+  const to = calculateNextRoundType(match, from);
+  match.nextRoundType = to;
+  match.hasReachedFive = getMaxScore(match) >= 5;
+  match.picaLoadedInTurn = false;
+
+  match.rounds.push({
+    id: crypto.randomUUID(),
+    type: "siguiente-ronda",
+    createdAt: new Date().toISOString(),
+    from,
+    to,
+    previous
+  });
+
+  persistData("Truco: siguiente ronda");
+  maybeOfferFinish();
 }
 
 function normalizeAfterCorrection(match) {
@@ -304,15 +331,15 @@ function normalizeAfterCorrection(match) {
   if (max >= 30) {
     match.nextRoundType = "finalizado";
     match.hasReachedFive = true;
-  } else if (max >= 25) {
-    match.nextRoundType = "redonda";
-    match.hasReachedFive = true;
-  } else if (max >= 5) {
-    if (!match.hasReachedFive) match.nextRoundType = "pica-pica";
-    match.hasReachedFive = true;
-  } else {
+    match.picaLoadedInTurn = false;
+  } else if (max < 5) {
     match.nextRoundType = "redonda";
     match.hasReachedFive = false;
+    match.picaLoadedInTurn = false;
+  } else if (max >= 25 && match.nextRoundType === "pica-pica") {
+    match.nextRoundType = "redonda";
+    match.hasReachedFive = true;
+    match.picaLoadedInTurn = false;
   }
 }
 
@@ -342,15 +369,21 @@ function addRedondaPoints(team, points) {
   };
   match.rounds.push(round);
 
-  if (points > 0) advanceAfterRound(match, "redonda");
-  else normalizeAfterCorrection(match);
+  if (getMaxScore(match) >= 30) {
+    match.nextRoundType = "finalizado";
+  }
+  if (points < 0) normalizeAfterCorrection(match);
 
   persistData(`Truco: ${playerTeamLabel(match, team)} ${points > 0 ? "+" : ""}${points}`);
   maybeOfferFinish();
 }
 
+function sideLabel(side) {
+  return side === "A" ? "Nosotros" : "Ellos";
+}
+
 function playerTeamLabel(match, side) {
-  return side === "A" ? "Equipo A" : "Equipo B";
+  return sideLabel(side);
 }
 
 function openPicaDialog() {
@@ -359,6 +392,10 @@ function openPicaDialog() {
 
   if (match.nextRoundType !== "pica-pica") {
     showToast("Ahora no toca pica pica.");
+    return;
+  }
+  if (match.picaLoadedInTurn) {
+    showToast("Este pica pica ya fue cargado. Tocá Siguiente ronda.");
     return;
   }
 
@@ -425,7 +462,11 @@ function savePicaPica(event) {
     previous
   });
 
-  advanceAfterRound(match, "pica-pica");
+  match.picaLoadedInTurn = true;
+  if (getMaxScore(match) >= 30) {
+    match.nextRoundType = "finalizado";
+    match.picaLoadedInTurn = false;
+  }
   $("picaDialog").close();
   persistData("Truco: cargar pica pica");
   maybeOfferFinish();
@@ -441,6 +482,7 @@ function undoLastRound() {
   if (last.previous) restoreSnapshot(match, last.previous);
   persistData("Truco: deshacer última carga");
 }
+
 
 function openCorrectDialog() {
   const match = db.activeMatch;
@@ -615,6 +657,7 @@ function createNewMatch(event) {
     scoreB: 0,
     nextRoundType: "redonda",
     hasReachedFive: false,
+    picaLoadedInTurn: false,
     rounds: []
   };
 
@@ -638,13 +681,15 @@ function renderStatus() {
   $("roleBadge").textContent = isAdmin ? "Admin" : "Visitante";
   $("updatedAt").textContent = db.updatedAt ? `Última actualización: ${formatDateTime(db.updatedAt)}` : "";
 
+  $("stickyScore").classList.toggle("hidden", !match);
+
   if (!match) {
     $("matchStatus").textContent = "No hay partida activa";
     return;
   }
 
   if (match.scoreA >= 30 || match.scoreB >= 30) {
-    const winner = match.scoreA > match.scoreB ? "Equipo A" : "Equipo B";
+    const winner = match.scoreA > match.scoreB ? "Nosotros" : "Ellos";
     $("matchStatus").textContent = `${winner} llegó a 30`;
   } else {
     $("matchStatus").textContent = `${teamName(match, "A")} vs ${teamName(match, "B")}`;
@@ -662,6 +707,9 @@ function renderMatch() {
   $("scoreA").textContent = match.scoreA;
   $("scoreB").textContent = match.scoreB;
   $("nextRound").textContent = nextRoundLabel(match.nextRoundType);
+  $("stickyScoreA").textContent = match.scoreA;
+  $("stickyScoreB").textContent = match.scoreB;
+  $("stickyNextRound").textContent = nextRoundLabel(match.nextRoundType);
   $("roundHint").textContent = getRoundHint(match);
 
   $("teamAPlayers").innerHTML = match.teamA.map(id => `<span class="chip">${playerName(id)}</span>`).join("");
@@ -672,7 +720,8 @@ function renderMatch() {
   $("teamACard").classList.toggle("losing", match.scoreA < match.scoreB);
   $("teamBCard").classList.toggle("losing", match.scoreB < match.scoreA);
 
-  $("loadPicaBtn").disabled = match.nextRoundType !== "pica-pica";
+  $("loadPicaBtn").disabled = match.nextRoundType !== "pica-pica" || Boolean(match.picaLoadedInTurn);
+  $("nextRoundBtn").disabled = match.nextRoundType === "finalizado" || (match.nextRoundType === "pica-pica" && !match.picaLoadedInTurn);
   $("finishBtn").disabled = match.scoreA === match.scoreB;
 
   $("picaPairs").innerHTML = match.picaPairs.map((pair, index) => `
@@ -690,20 +739,24 @@ function getRoundHint(match) {
   const max = getMaxScore(match);
   if (max >= 30) return "El partido ya puede finalizarse.";
   if (max >= 25) return "Desde 25 no hay más pica pica.";
+  if (match.nextRoundType === "pica-pica" && match.picaLoadedInTurn) return "Pica pica cargado. Tocá Siguiente ronda.";
   if (match.nextRoundType === "pica-pica") return "Cargá los tres mano a mano y se suma el neto.";
-  if (max < 5) return "Hasta que un equipo llegue a 5, se juega redonda.";
-  return "Alterna con pica pica hasta que alguien llegue a 25.";
+  if (max < 5) return "Sumá los puntos y tocá Siguiente ronda al cerrar la mano.";
+  return "Sumá los puntos y tocá Siguiente ronda. Alterna hasta 25.";
 }
 
 function roundLogHtml(round) {
   if (round.type === "pica-pica") {
-    const winner = round.netWinner === "empate" ? "Empate" : `Equipo ${round.netWinner} +${round.netPoints}`;
+    const winner = round.netWinner === "empate" ? "Empate" : `${sideLabel(round.netWinner)} +${round.netPoints}`;
     return `<div class="list-item"><div><strong>Pica pica</strong><div class="small">${round.totalA} a ${round.totalB}</div></div><span class="pill">${winner}</span></div>`;
   }
   if (round.type === "correccion") {
     return `<div class="list-item"><div><strong>Corrección</strong><div class="small">Marcador ajustado</div></div><span class="pill">${round.scoreA ?? ""} - ${round.scoreB ?? ""}</span></div>`;
   }
-  return `<div class="list-item"><div><strong>Redonda</strong><div class="small">Equipo ${round.team}</div></div><span class="pill">${round.points > 0 ? "+" : ""}${round.points}</span></div>`;
+  if (round.type === "siguiente-ronda") {
+    return `<div class="list-item"><div><strong>Siguiente ronda</strong><div class="small">${nextRoundLabel(round.from)} → ${nextRoundLabel(round.to)}</div></div><span class="pill">${nextRoundLabel(round.to)}</span></div>`;
+  }
+  return `<div class="list-item"><div><strong>Redonda</strong><div class="small">${sideLabel(round.team)}</div></div><span class="pill">${round.points > 0 ? "+" : ""}${round.points}</span></div>`;
 }
 
 function renderRanking() {
@@ -934,6 +987,7 @@ function bindEvents() {
   });
 
   $("loadPicaBtn").addEventListener("click", openPicaDialog);
+  $("nextRoundBtn").addEventListener("click", goToNextRound);
   $("cancelPicaBtn").addEventListener("click", () => $("picaDialog").close());
   $("picaForm").addEventListener("submit", savePicaPica);
   $("undoBtn").addEventListener("click", undoLastRound);

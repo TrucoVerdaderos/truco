@@ -4,7 +4,7 @@ Web estática para jugar al truco 3 vs 3 con:
 
 - Marcador hasta 30.
 - Equipos de 3 jugadores.
-- Modalidad redonda y pica pica automática.
+- Modalidad redonda y pica pica con botón de siguiente ronda.
 - Carga individual de los pica pica.
 - Mano a mano durante la partida.
 - Ranking con rating inicial de 300.
@@ -41,7 +41,7 @@ Entrar agregando `?admin=1`:
 https://TU_USUARIO.github.io/NOMBRE_DEL_REPO/?admin=1
 ```
 
-El admin puede crear partidas, sumar puntos, cargar pica pica, finalizar partidos y guardar el ranking.
+El admin puede crear partidas, sumar/restar de a 1, pasar a la siguiente ronda, cargar pica pica, finalizar partidos y guardar el ranking.
 
 ## Configuración del token admin
 
@@ -76,10 +76,12 @@ La app lo guarda solo en el navegador del admin mediante `localStorage`.
 5. Guardar.
 6. Entrar a la URL publicada.
 
-## Cómo funciona el pica pica
+## Cómo funcionan las rondas
 
-- Hasta que un equipo llegue a 5 puntos, se juega redonda.
-- Cuando un equipo llega a 5 o más, la próxima ronda es pica pica.
+- En redonda, el admin suma o resta puntos de a 1.
+- Cuando termina la mano, el admin toca `Siguiente ronda`.
+- Hasta que un equipo llegue a 5 puntos, se sigue jugando redonda.
+- Cuando un equipo llega a 5 o más, al tocar `Siguiente ronda` la próxima será pica pica.
 - Después alterna pica pica / redonda.
 - Cuando cualquier equipo llega a 25 o más, ya no hay más pica pica.
 - En pica pica se cargan los 3 mano a mano.

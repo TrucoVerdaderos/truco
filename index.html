@@ -19,6 +19,21 @@
   </header>
 
   <main class="layout">
+    <section id="stickyScore" class="sticky-score hidden" aria-label="Marcador fijo">
+      <div class="sticky-team">
+        <span>Nosotros</span>
+        <strong id="stickyScoreA">0</strong>
+      </div>
+      <div class="sticky-round">
+        <span>Próxima</span>
+        <strong id="stickyNextRound">Redonda</strong>
+      </div>
+      <div class="sticky-team">
+        <span>Ellos</span>
+        <strong id="stickyScoreB">0</strong>
+      </div>
+    </section>
+
     <section id="statusPanel" class="card status-card">
       <div>
         <p class="muted">Estado</p>
@@ -47,14 +62,12 @@
       <div id="matchView" class="hidden">
         <div class="scoreboard">
           <article class="team-card" id="teamACard">
-            <p class="muted">Equipo A</p>
-            <h2 id="teamAName">Equipo A</h2>
+            <p class="muted">Nosotros</p>
+            <h2 id="teamAName">Nosotros</h2>
             <div id="scoreA" class="score">0</div>
             <div id="teamAPlayers" class="chips"></div>
             <div class="admin-controls admin-only">
               <button class="btn" data-quick="A:1">+1</button>
-              <button class="btn" data-quick="A:2">+2</button>
-              <button class="btn" data-quick="A:3">+3</button>
               <button class="btn ghost" data-quick="A:-1">-1</button>
             </div>
           </article>
@@ -65,6 +78,7 @@
             <p id="roundHint" class="muted"></p>
             <div class="admin-controls admin-only stack">
               <button id="loadPicaBtn" class="btn accent">Cargar pica pica</button>
+              <button id="nextRoundBtn" class="btn">Siguiente ronda</button>
               <button id="undoBtn" class="btn secondary">Deshacer última carga</button>
               <button id="correctBtn" class="btn secondary">Corregir marcador</button>
               <button id="finishBtn" class="btn danger">Finalizar partido</button>
@@ -72,14 +86,12 @@
           </article>
 
           <article class="team-card" id="teamBCard">
-            <p class="muted">Equipo B</p>
-            <h2 id="teamBName">Equipo B</h2>
+            <p class="muted">Ellos</p>
+            <h2 id="teamBName">Ellos</h2>
             <div id="scoreB" class="score">0</div>
             <div id="teamBPlayers" class="chips"></div>
             <div class="admin-controls admin-only">
               <button class="btn" data-quick="B:1">+1</button>
-              <button class="btn" data-quick="B:2">+2</button>
-              <button class="btn" data-quick="B:3">+3</button>
               <button class="btn ghost" data-quick="B:-1">-1</button>
             </div>
           </article>
@@ -167,12 +179,12 @@
             <h2>Nueva partida</h2>
           </div>
           <form id="newMatchForm" class="form-grid">
-            <h3>Equipo A</h3>
+            <h3>Nosotros</h3>
             <select id="teamA1"></select>
             <select id="teamA2"></select>
             <select id="teamA3"></select>
 
-            <h3>Equipo B</h3>
+            <h3>Ellos</h3>
             <select id="teamB1"></select>
             <select id="teamB2"></select>
             <select id="teamB3"></select>
@@ -220,11 +232,11 @@
       <h2>Corregir marcador</h2>
       <div class="grid two compact">
         <div>
-          <label>Equipo A</label>
+          <label>Nosotros</label>
           <input id="correctA" type="number" min="0" max="30" step="1">
         </div>
         <div>
-          <label>Equipo B</label>
+          <label>Ellos</label>
           <input id="correctB" type="number" min="0" max="30" step="1">
         </div>
       </div>
