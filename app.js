@@ -5,8 +5,8 @@
 */
 
 const CONFIG = {
-  owner: "",       // Se autodetecta en GitHub Pages. Completar si usás dominio propio.
-  repo: "",        // Se autodetecta en GitHub Pages. Completar si usás dominio propio.
+  owner: "TrucoVerdaderos",
+  repo: "truco",
   branch: "main",
   dataPath: "data.json",
   pollMs: 5000
@@ -97,7 +97,8 @@ async function loadData({ silent = false } = {}) {
 
   try {
     if (hasGithubConfig()) {
-      const remote = await getRemoteData();
+      const token = isAdmin ? (localStorage.getItem(STORAGE_TOKEN) || "") : "";
+      const remote = await getRemoteData(token);
       db = remote.data;
       remoteSha = remote.sha;
       lastLoadedVersion = db.version || 1;
@@ -116,7 +117,8 @@ async function loadData({ silent = false } = {}) {
       db = normalizeData(await response.json());
       lastLoadedVersion = db.version || 1;
       localStorage.setItem(STORAGE_LOCAL_DB, JSON.stringify(db));
-      setSync("Modo local", "warn");
+      const hostedOnGithubPages = window.location.hostname.endsWith(".github.io");
+      setSync(hostedOnGithubPages ? "Actualizado" : "Modo local", hostedOnGithubPages ? "good" : "warn");
       render();
       return;
     }
