@@ -1,6 +1,6 @@
 {
-  "version": 53,
-  "updatedAt": "2026-06-06T04:15:10.931Z",
+  "version": 54,
+  "updatedAt": "2026-06-06T04:22:41.607Z",
   "players": {
     "nico": {
       "id": "nico",
@@ -51,7 +51,40 @@
       "losses": 1
     }
   },
-  "activeMatch": null,
+  "activeMatch": {
+    "id": "451c5502-a8b3-4b04-9630-9a758458144a",
+    "createdAt": "2026-06-06T04:22:40.691Z",
+    "teamA": [
+      "nico",
+      "seba",
+      "gaspe"
+    ],
+    "teamB": [
+      "rama",
+      "valen",
+      "scrava"
+    ],
+    "picaPairs": [
+      {
+        "a": "seba",
+        "b": "scrava"
+      },
+      {
+        "a": "gaspe",
+        "b": "valen"
+      },
+      {
+        "a": "nico",
+        "b": "rama"
+      }
+    ],
+    "scoreA": 0,
+    "scoreB": 0,
+    "nextRoundType": "redonda",
+    "hasReachedFive": false,
+    "picaLoadedInTurn": false,
+    "rounds": []
+  },
   "matches": [
     {
       "id": "ef455913-bf9d-40f4-82a3-44d3adbeea24",
