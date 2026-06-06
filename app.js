@@ -226,7 +226,6 @@ async function persistData(message = "Actualizar datos del truco") {
     localStorage.setItem(STORAGE_LOCAL_DB, JSON.stringify(db));
     setSync("Guardado", "good");
     render();
-    showToast("Guardado en GitHub.");
   } catch (error) {
     console.error(error);
     setSync("Error", "bad");
