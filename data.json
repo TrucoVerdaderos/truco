@@ -1,15 +1,89 @@
 {
-  "version": 1,
-  "updatedAt": "2026-06-05T00:00:00.000Z",
+  "version": 2,
+  "updatedAt": "2026-06-06T00:58:41.278Z",
   "players": {
-    "nico": { "id": "nico", "name": "Nico", "rating": 300, "played": 0, "wins": 0, "losses": 0 },
-    "scrava": { "id": "scrava", "name": "Scrava", "rating": 300, "played": 0, "wins": 0, "losses": 0 },
-    "gaspe": { "id": "gaspe", "name": "Gaspe", "rating": 300, "played": 0, "wins": 0, "losses": 0 },
-    "valen": { "id": "valen", "name": "Valen", "rating": 300, "played": 0, "wins": 0, "losses": 0 },
-    "rama": { "id": "rama", "name": "Rama", "rating": 300, "played": 0, "wins": 0, "losses": 0 },
-    "seba": { "id": "seba", "name": "Seba", "rating": 300, "played": 0, "wins": 0, "losses": 0 }
+    "nico": {
+      "id": "nico",
+      "name": "Nico",
+      "rating": 300,
+      "played": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "scrava": {
+      "id": "scrava",
+      "name": "Scrava",
+      "rating": 300,
+      "played": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "gaspe": {
+      "id": "gaspe",
+      "name": "Gaspe",
+      "rating": 300,
+      "played": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "valen": {
+      "id": "valen",
+      "name": "Valen",
+      "rating": 300,
+      "played": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "rama": {
+      "id": "rama",
+      "name": "Rama",
+      "rating": 300,
+      "played": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "seba": {
+      "id": "seba",
+      "name": "Seba",
+      "rating": 300,
+      "played": 0,
+      "wins": 0,
+      "losses": 0
+    }
   },
-  "activeMatch": null,
+  "activeMatch": {
+    "id": "18030842-2512-44ba-8d66-07ef919a081d",
+    "createdAt": "2026-06-06T00:58:39.145Z",
+    "teamA": [
+      "nico",
+      "seba",
+      "gaspe"
+    ],
+    "teamB": [
+      "rama",
+      "valen",
+      "scrava"
+    ],
+    "picaPairs": [
+      {
+        "a": "seba",
+        "b": "scrava"
+      },
+      {
+        "a": "gaspe",
+        "b": "valen"
+      },
+      {
+        "a": "nico",
+        "b": "rama"
+      }
+    ],
+    "scoreA": 0,
+    "scoreB": 0,
+    "nextRoundType": "redonda",
+    "hasReachedFive": false,
+    "rounds": []
+  },
   "matches": [],
   "headToHead": {}
 }
