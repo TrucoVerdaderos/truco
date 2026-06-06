@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Truco 3 vs 3</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Truco 3 vs 3</p>
+      <h1>Contador y ranking</h1>
+    </div>
+    <div class="header-actions">
+      <span id="roleBadge" class="badge">Visitante</span>
+      <button id="refreshBtn" class="btn secondary">Actualizar</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section id="statusPanel" class="card status-card">
+      <div>
+        <p class="muted">Estado</p>
+        <h2 id="matchStatus">Cargando datos...</h2>
+      </div>
+      <div class="status-meta">
+        <span id="syncStatus" class="pill">Sincronizando</span>
+        <span id="updatedAt" class="muted"></span>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="Secciones">
+      <button class="tab active" data-tab="partido">Partido</button>
+      <button class="tab" data-tab="ranking">Ranking</button>
+      <button class="tab" data-tab="manoamano">Mano a mano</button>
+      <button class="tab" data-tab="historial">Historial</button>
+      <button id="adminTabBtn" class="tab admin-only" data-tab="admin">Admin</button>
+    </nav>
+
+    <section id="partido" class="tab-panel active">
+      <div id="noMatch" class="card empty-state">
+        <h2>No hay partida activa</h2>
+        <p>El admin puede crear una nueva partida desde la pestaña Admin.</p>
+      </div>
+
+      <div id="matchView" class="hidden">
+        <div class="scoreboard">
+          <article class="team-card" id="teamACard">
+            <p class="muted">Equipo A</p>
+            <h2 id="teamAName">Equipo A</h2>
+            <div id="scoreA" class="score">0</div>
+            <div id="teamAPlayers" class="chips"></div>
+            <div class="admin-controls admin-only">
+              <button class="btn" data-quick="A:1">+1</button>
+              <button class="btn" data-quick="A:2">+2</button>
+              <button class="btn" data-quick="A:3">+3</button>
+              <button class="btn ghost" data-quick="A:-1">-1</button>
+            </div>
+          </article>
+
+          <article class="center-card card">
+            <p class="muted">Próxima ronda</p>
+            <h2 id="nextRound">Redonda</h2>
+            <p id="roundHint" class="muted"></p>
+            <div class="admin-controls admin-only stack">
+              <button id="loadPicaBtn" class="btn accent">Cargar pica pica</button>
+              <button id="undoBtn" class="btn secondary">Deshacer última carga</button>
+              <button id="correctBtn" class="btn secondary">Corregir marcador</button>
+              <button id="finishBtn" class="btn danger">Finalizar partido</button>
+            </div>
+          </article>
+
+          <article class="team-card" id="teamBCard">
+            <p class="muted">Equipo B</p>
+            <h2 id="teamBName">Equipo B</h2>
+            <div id="scoreB" class="score">0</div>
+            <div id="teamBPlayers" class="chips"></div>
+            <div class="admin-controls admin-only">
+              <button class="btn" data-quick="B:1">+1</button>
+              <button class="btn" data-quick="B:2">+2</button>
+              <button class="btn" data-quick="B:3">+3</button>
+              <button class="btn ghost" data-quick="B:-1">-1</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="grid two">
+          <section class="card">
+            <div class="section-head">
+              <h2>Cruces pica pica</h2>
+            </div>
+            <div id="picaPairs" class="list"></div>
+          </section>
+          <section class="card">
+            <div class="section-head">
+              <h2>Últimas cargas</h2>
+            </div>
+            <div id="roundLog" class="list"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="ranking" class="tab-panel">
+      <section class="card">
+        <div class="section-head">
+          <h2>Ranking</h2>
+          <p class="muted">Todos arrancan con 300.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>#</th><th>Jugador</th><th>Rating</th><th>PJ</th><th>PG</th><th>PP</th></tr>
+            </thead>
+            <tbody id="rankingRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section id="manoamano" class="tab-panel">
+      <div class="grid two">
+        <section class="card">
+          <div class="section-head">
+            <h2>Mano a mano de la partida</h2>
+          </div>
+          <div id="currentH2H" class="list"></div>
+        </section>
+        <section class="card">
+          <div class="section-head">
+            <h2>Histórico</h2>
+          </div>
+          <div id="historicH2H" class="list"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="historial" class="tab-panel">
+      <section class="card">
+        <div class="section-head">
+          <h2>Historial de partidas</h2>
+          <p class="muted">La app conserva el último año.</p>
+        </div>
+        <div id="historyList" class="list"></div>
+      </section>
+    </section>
+
+    <section id="admin" class="tab-panel admin-only">
+      <div class="grid two">
+        <section class="card">
+          <div class="section-head">
+            <h2>Acceso admin</h2>
+            <p class="muted">El token queda solo en este navegador.</p>
+          </div>
+          <label>Token de GitHub</label>
+          <input id="tokenInput" type="password" autocomplete="off" placeholder="Pegá el token del admin">
+          <div class="row-actions">
+            <button id="saveTokenBtn" class="btn">Guardar token</button>
+            <button id="clearTokenBtn" class="btn secondary">Borrar token</button>
+          </div>
+          <p class="help">Necesita permiso de escritura en Contents para este repositorio.</p>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <h2>Nueva partida</h2>
+          </div>
+          <form id="newMatchForm" class="form-grid">
+            <h3>Equipo A</h3>
+            <select id="teamA1"></select>
+            <select id="teamA2"></select>
+            <select id="teamA3"></select>
+
+            <h3>Equipo B</h3>
+            <select id="teamB1"></select>
+            <select id="teamB2"></select>
+            <select id="teamB3"></select>
+
+            <h3>Cruces pica pica</h3>
+            <div class="pair-grid">
+              <select id="pairA1"></select><span>vs</span><select id="pairB1"></select>
+              <select id="pairA2"></select><span>vs</span><select id="pairB2"></select>
+              <select id="pairA3"></select><span>vs</span><select id="pairB3"></select>
+            </div>
+
+            <button class="btn accent" type="submit">Crear partida</button>
+          </form>
+        </section>
+      </div>
+
+      <section class="card">
+        <div class="section-head">
+          <h2>Respaldo manual</h2>
+          <p class="muted">Útil si probás localmente o querés guardar copia.</p>
+        </div>
+        <div class="row-actions">
+          <button id="exportBtn" class="btn secondary">Exportar JSON</button>
+          <label class="btn secondary file-label">Importar JSON<input id="importInput" type="file" accept="application/json"></label>
+          <button id="resetBtn" class="btn danger">Reset total</button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="picaDialog" class="modal">
+    <form method="dialog" id="picaForm">
+      <h2>Cargar pica pica</h2>
+      <p class="muted">Cargá los puntos individuales. La app suma solo el neto al marcador.</p>
+      <div id="picaInputs" class="pica-inputs"></div>
+      <div class="modal-actions">
+        <button id="cancelPicaBtn" type="button" class="btn secondary">Cancelar</button>
+        <button id="savePicaBtn" class="btn accent" value="default">Guardar pica pica</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="correctDialog" class="modal">
+    <form method="dialog" id="correctForm">
+      <h2>Corregir marcador</h2>
+      <div class="grid two compact">
+        <div>
+          <label>Equipo A</label>
+          <input id="correctA" type="number" min="0" max="30" step="1">
+        </div>
+        <div>
+          <label>Equipo B</label>
+          <input id="correctB" type="number" min="0" max="30" step="1">
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="cancelCorrectBtn" type="button" class="btn secondary">Cancelar</button>
+        <button class="btn accent" value="default">Guardar corrección</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="app.js"></script>
+</body>
+</html>

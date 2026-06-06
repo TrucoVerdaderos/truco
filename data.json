@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-05T00:00:00.000Z",
+  "players": {
+    "nico": { "id": "nico", "name": "Nico", "rating": 300, "played": 0, "wins": 0, "losses": 0 },
+    "scrava": { "id": "scrava", "name": "Scrava", "rating": 300, "played": 0, "wins": 0, "losses": 0 },
+    "gaspe": { "id": "gaspe", "name": "Gaspe", "rating": 300, "played": 0, "wins": 0, "losses": 0 },
+    "valen": { "id": "valen", "name": "Valen", "rating": 300, "played": 0, "wins": 0, "losses": 0 },
+    "rama": { "id": "rama", "name": "Rama", "rating": 300, "played": 0, "wins": 0, "losses": 0 },
+    "seba": { "id": "seba", "name": "Seba", "rating": 300, "played": 0, "wins": 0, "losses": 0 }
+  },
+  "activeMatch": null,
+  "matches": [],
+  "headToHead": {}
+}
