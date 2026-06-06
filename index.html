@@ -8,9 +8,13 @@
 </head>
 <body>
   <header class="app-header">
-    <div>
-      <p class="eyebrow">Truco 3 vs 3</p>
-      <h1>Contador y ranking</h1>
+    <div class="brand">
+      <button class="icon-btn" type="button" aria-label="Menú">☰</button>
+      <div class="brand-mark" aria-hidden="true">♣</div>
+      <div>
+        <h1>Truco 3 vs 3</h1>
+        <p class="live"><span></span>En vivo</p>
+      </div>
     </div>
     <div class="header-actions">
       <span id="roleBadge" class="badge">Visitante</span>
@@ -97,20 +101,61 @@
           </article>
         </div>
 
-        <div class="grid two">
-          <section class="card">
-            <div class="section-head">
-              <h2>Cruces pica pica</h2>
+        <section class="card pica-card">
+          <div class="section-head">
+            <div>
+              <h2>Pica pica</h2>
+              <p class="muted">Enfrentamientos 1 vs 1</p>
             </div>
-            <div id="picaPairs" class="list"></div>
+            <button class="btn secondary small-btn" type="button" data-tab-jump="manoamano">Ver detalles</button>
+          </div>
+          <div id="picaPairs" class="list pica-list"></div>
+        </section>
+
+        <div class="grid two dashboard-grid">
+          <section class="card ranking-preview">
+            <div class="section-head">
+              <div>
+                <h2>Ranking</h2>
+                <p class="muted">Jugadores</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>#</th><th>Jugador</th><th>Partidas</th><th>Puntos</th></tr>
+                </thead>
+                <tbody id="miniRankingRows"></tbody>
+              </table>
+            </div>
+            <button class="btn secondary full-btn" type="button" data-tab-jump="ranking">Ver ranking completo</button>
           </section>
-          <section class="card">
+
+          <section class="card history-preview">
             <div class="section-head">
-              <h2>Últimas cargas</h2>
+              <div>
+                <h2>Historial</h2>
+                <p class="muted">Últimas rondas</p>
+              </div>
             </div>
-            <div id="roundLog" class="list"></div>
+            <div id="roundLog" class="list history-list"></div>
+            <button class="btn secondary full-btn" type="button" data-tab-jump="historial">Ver historial completo</button>
           </section>
         </div>
+
+        <section class="card stats-card">
+          <div class="section-head">
+            <div>
+              <h2>Estadísticas rápidas</h2>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-box"><span>Partidas jugadas</span><strong id="statMatches">0</strong><small>Esta sesión</small></div>
+            <div class="stat-box"><span>Rondas jugadas</span><strong id="statRounds">0</strong><small>Esta sesión</small></div>
+            <div class="stat-box"><span>Mayor racha</span><strong id="statLead">0</strong><small id="statLeadTeam">—</small></div>
+            <div class="stat-box"><span>Tiempo de juego</span><strong id="statTime">0m</strong><small>Esta sesión</small></div>
+          </div>
+        </section>
       </div>
     </section>
 

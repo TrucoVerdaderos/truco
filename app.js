@@ -384,6 +384,17 @@ function sideLabel(side) {
   return side === "A" ? "Nosotros" : "Ellos";
 }
 
+function playerInitial(id) {
+  return (playerName(id) || "?").slice(0, 1).toUpperCase();
+}
+
+function teamAccentClass(id) {
+  const match = db?.activeMatch;
+  if (match?.teamA?.includes(id)) return "avatar-a";
+  if (match?.teamB?.includes(id)) return "avatar-b";
+  return PLAYER_ORDER.indexOf(id) < 3 ? "avatar-a" : "avatar-b";
+}
+
 function playerTeamLabel(match, side) {
   return sideLabel(side);
 }
@@ -675,6 +686,7 @@ function render() {
   renderCurrentH2H();
   renderHistoricH2H();
   renderHistory();
+  renderQuickStats();
   populateAdminSelects();
 }
 
@@ -727,9 +739,18 @@ function renderMatch() {
   $("finishBtn").disabled = match.scoreA === match.scoreB;
 
   $("picaPairs").innerHTML = match.picaPairs.map((pair, index) => `
-    <div class="list-item">
-      <div><strong>Duelo ${index + 1}</strong><div class="small">${playerName(pair.a)} vs ${playerName(pair.b)}</div></div>
-      <span class="pill">Pica pica</span>
+    <div class="list-item pica-match">
+      <div class="pica-player pica-player-a">
+        <span class="avatar avatar-a">${playerInitial(pair.a)}</span>
+        <div><strong>${playerName(pair.a)}</strong><div class="small">Nosotros</div></div>
+      </div>
+      <div class="pica-scoreline">
+        <span>0</span><em>vs</em><span>0</span>
+      </div>
+      <div class="pica-player pica-player-b">
+        <div><strong>${playerName(pair.b)}</strong><div class="small">Ellos</div></div>
+        <span class="avatar avatar-b">${playerInitial(pair.b)}</span>
+      </div>
     </div>
   `).join("");
 
@@ -769,13 +790,24 @@ function renderRanking() {
   $("rankingRows").innerHTML = rows.map((p, index) => `
     <tr>
       <td>${index + 1}</td>
-      <td>${p.name}</td>
+      <td><span class="avatar ${teamAccentClass(p.id)}">${playerInitial(p.id)}</span> ${p.name}</td>
       <td><strong>${Math.round(p.rating)}</strong></td>
       <td>${p.played}</td>
       <td>${p.wins}</td>
       <td>${p.losses}</td>
     </tr>
   `).join("");
+
+  if ($("miniRankingRows")) {
+    $("miniRankingRows").innerHTML = rows.map((p, index) => `
+      <tr>
+        <td>${index + 1}</td>
+        <td><span class="avatar ${teamAccentClass(p.id)}">${playerInitial(p.id)}</span> ${p.name}</td>
+        <td>${p.played}</td>
+        <td><strong>${Math.round(p.rating)}</strong></td>
+      </tr>
+    `).join("");
+  }
 }
 
 function renderCurrentH2H() {
@@ -850,6 +882,25 @@ function renderHistory() {
       <span class="pill">${match.rounds?.length || 0} rondas</span>
     </div>`;
   }).join("");
+}
+
+function renderQuickStats() {
+  if (!$('statMatches')) return;
+  const match = db?.activeMatch;
+  const rounds = match?.rounds || [];
+  $('statMatches').textContent = String((db?.matches?.length || 0) + (match ? 1 : 0));
+  $('statRounds').textContent = String(rounds.filter(r => r.type !== 'siguiente-ronda').length);
+  const lead = match ? Math.abs((match.scoreA || 0) - (match.scoreB || 0)) : 0;
+  $('statLead').textContent = String(lead);
+  $('statLeadTeam').textContent = !match || lead === 0 ? 'Empate' : match.scoreA > match.scoreB ? 'Nosotros' : 'Ellos';
+  if (match?.createdAt) {
+    const minutes = Math.max(0, Math.round((Date.now() - new Date(match.createdAt).getTime()) / 60000));
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    $('statTime').textContent = hours ? `${hours}h ${mins}m` : `${mins}m`;
+  } else {
+    $('statTime').textContent = '0m';
+  }
 }
 
 function populateAdminSelects() {
@@ -1032,5 +1083,11 @@ async function init() {
     pollTimer = setInterval(() => loadData({ silent: true }), CONFIG.pollMs);
   }
 }
+
+document.addEventListener("click", (event) => {
+  const target = event.target.closest("[data-tab-jump]");
+  if (!target) return;
+  setActiveTab(target.dataset.tabJump);
+});
 
 init();
