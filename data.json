@@ -1,6 +1,6 @@
 {
-  "version": 18,
-  "updatedAt": "2026-06-06T01:06:00.900Z",
+  "version": 19,
+  "updatedAt": "2026-06-06T01:06:06.317Z",
   "players": {
     "nico": {
       "id": "nico",
@@ -78,9 +78,9 @@
         "b": "rama"
       }
     ],
-    "scoreA": 25,
+    "scoreA": 21,
     "scoreB": 4,
-    "nextRoundType": "redonda",
+    "nextRoundType": "pica-pica",
     "hasReachedFive": true,
     "rounds": [
       {
@@ -372,41 +372,6 @@
           "scoreA": 18,
           "scoreB": 4,
           "nextRoundType": "redonda",
-          "hasReachedFive": true
-        }
-      },
-      {
-        "id": "8261e994-e17c-4b22-aab1-5a805c45062a",
-        "type": "pica-pica",
-        "createdAt": "2026-06-06T01:05:59.883Z",
-        "duels": [
-          {
-            "playerA": "seba",
-            "playerB": "scrava",
-            "pointsA": 4,
-            "pointsB": 0
-          },
-          {
-            "playerA": "gaspe",
-            "playerB": "valen",
-            "pointsA": 0,
-            "pointsB": 0
-          },
-          {
-            "playerA": "nico",
-            "playerB": "rama",
-            "pointsA": 0,
-            "pointsB": 0
-          }
-        ],
-        "totalA": 4,
-        "totalB": 0,
-        "netWinner": "A",
-        "netPoints": 4,
-        "previous": {
-          "scoreA": 21,
-          "scoreB": 4,
-          "nextRoundType": "pica-pica",
           "hasReachedFive": true
         }
       }
