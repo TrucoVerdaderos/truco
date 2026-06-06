@@ -1,6 +1,6 @@
 {
-  "version": 13,
-  "updatedAt": "2026-06-06T01:05:35.098Z",
+  "version": 14,
+  "updatedAt": "2026-06-06T01:05:40.876Z",
   "players": {
     "nico": {
       "id": "nico",
@@ -78,7 +78,7 @@
         "b": "rama"
       }
     ],
-    "scoreA": 12,
+    "scoreA": 15,
     "scoreB": 4,
     "nextRoundType": "redonda",
     "hasReachedFive": true,
@@ -261,6 +261,54 @@
         "netPoints": 0,
         "previous": {
           "scoreA": 12,
+          "scoreB": 4,
+          "nextRoundType": "pica-pica",
+          "hasReachedFive": true
+        }
+      },
+      {
+        "id": "af2de2bc-4ec3-4ca9-8905-82b3bd770569",
+        "type": "redonda",
+        "createdAt": "2026-06-06T01:05:35.455Z",
+        "team": "A",
+        "points": 3,
+        "previous": {
+          "scoreA": 12,
+          "scoreB": 4,
+          "nextRoundType": "redonda",
+          "hasReachedFive": true
+        }
+      },
+      {
+        "id": "51d93c4a-47e4-410e-952f-e51b215df917",
+        "type": "pica-pica",
+        "createdAt": "2026-06-06T01:05:40.275Z",
+        "duels": [
+          {
+            "playerA": "seba",
+            "playerB": "scrava",
+            "pointsA": 0,
+            "pointsB": 0
+          },
+          {
+            "playerA": "gaspe",
+            "playerB": "valen",
+            "pointsA": 0,
+            "pointsB": 0
+          },
+          {
+            "playerA": "nico",
+            "playerB": "rama",
+            "pointsA": 0,
+            "pointsB": 0
+          }
+        ],
+        "totalA": 0,
+        "totalB": 0,
+        "netWinner": "empate",
+        "netPoints": 0,
+        "previous": {
+          "scoreA": 15,
           "scoreB": 4,
           "nextRoundType": "pica-pica",
           "hasReachedFive": true
