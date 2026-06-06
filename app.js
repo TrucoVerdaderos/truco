@@ -742,13 +742,13 @@ function renderMatch() {
     <div class="list-item pica-match">
       <div class="pica-player pica-player-a">
         <span class="avatar avatar-a">${playerInitial(pair.a)}</span>
-        <div><strong>${playerName(pair.a)}</strong><div class="small">Nosotros</div></div>
+        <div><strong>${playerName(pair.a)}</strong></div>
       </div>
       <div class="pica-scoreline">
         <span>0</span><em>vs</em><span>0</span>
       </div>
       <div class="pica-player pica-player-b">
-        <div><strong>${playerName(pair.b)}</strong><div class="small">Ellos</div></div>
+        <div><strong>${playerName(pair.b)}</strong></div>
         <span class="avatar avatar-b">${playerInitial(pair.b)}</span>
       </div>
     </div>

@@ -541,3 +541,88 @@ body.admin-mode .tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .pica-card, .ranking-preview, .history-preview, #ranking .card, #manoamano .card, #historial .card, #admin .card { padding: 14px; }
   .tabs { bottom: max(4px, env(safe-area-inset-bottom)); }
 }
+
+
+/* v8 mobile visual fixes */
+.scoreboard {
+  background:
+    linear-gradient(180deg, rgba(18, 27, 39, .93), rgba(7, 12, 19, .96));
+}
+.scoreboard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 78% 70% at 18% 20%, rgba(47, 124, 255, .34), rgba(47, 124, 255, .13) 32%, transparent 64%),
+    radial-gradient(ellipse 78% 70% at 82% 20%, rgba(239, 68, 68, .30), rgba(239, 68, 68, .11) 32%, transparent 64%);
+  opacity: .95;
+}
+.scoreboard::after {
+  background:
+    linear-gradient(90deg, rgba(47,124,255,.70), transparent 27%, transparent 73%, rgba(239,68,68,.70));
+  opacity: .24;
+}
+.team-card, .center-card {
+  position: relative;
+  z-index: 1;
+}
+.team-card h2 { order: 1; margin-bottom: 8px; }
+.team-card::before { order: 2; margin-bottom: 8px; }
+.team-card .score { order: 3; }
+.team-card .chips { order: 4; }
+.team-card .admin-controls { order: 5; }
+
+/* Keep section titles left-aligned; only push buttons to the right */
+.section-head {
+  justify-content: flex-start;
+  align-items: center;
+}
+.section-head > div {
+  min-width: 0;
+  text-align: left;
+}
+.section-head > .btn,
+.section-head > button,
+.section-head > [data-tab-jump] {
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+.ranking-preview .section-head,
+.history-preview .section-head,
+.pica-card .section-head {
+  justify-content: flex-start;
+}
+
+/* Pica pica rows: no team labels under player names */
+.pica-player .small { display: none !important; }
+.pica-player strong { display: block; line-height: 1.15; }
+.pica-player { align-items: center; }
+.pica-player-b { align-items: center; }
+
+@media (max-width: 760px) {
+  .scoreboard {
+    background:
+      linear-gradient(180deg, rgba(18, 27, 39, .94), rgba(7, 12, 19, .97));
+  }
+  .scoreboard::before {
+    background:
+      radial-gradient(ellipse 95% 76% at 18% 18%, rgba(47, 124, 255, .38), rgba(47, 124, 255, .13) 34%, transparent 66%),
+      radial-gradient(ellipse 95% 76% at 82% 18%, rgba(239, 68, 68, .34), rgba(239, 68, 68, .12) 34%, transparent 66%);
+  }
+  .team-card h2 { margin-bottom: 10px; }
+  .team-card::before { margin-bottom: 10px; }
+  .section-head { gap: 10px; }
+  .section-head h2, .section-head p { text-align: left; }
+}
+
+@media (max-width: 420px) {
+  .section-head { align-items: center; }
+  .pica-card .section-head::before,
+  .ranking-preview .section-head::before,
+  .history-preview .section-head::before {
+    flex: 0 0 30px;
+  }
+  .section-head > div { flex: 1 1 auto; }
+  .small-btn { padding-inline: 12px; }
+}
