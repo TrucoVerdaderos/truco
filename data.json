@@ -1,514 +1,526 @@
 {
-  "version": 52,
-  "updatedAt": "2026-06-06T04:15:05.619Z",
+  "version": 53,
+  "updatedAt": "2026-06-06T04:15:10.931Z",
   "players": {
     "nico": {
       "id": "nico",
       "name": "Nico",
-      "rating": 250,
-      "played": 2,
-      "wins": 1,
+      "rating": 302,
+      "played": 3,
+      "wins": 2,
       "losses": 1
     },
     "scrava": {
       "id": "scrava",
       "name": "Scrava",
-      "rating": 298,
-      "played": 2,
-      "wins": 1,
+      "rating": 330,
+      "played": 3,
+      "wins": 2,
       "losses": 1
     },
     "gaspe": {
       "id": "gaspe",
       "name": "Gaspe",
-      "rating": 206,
-      "played": 2,
+      "rating": 154,
+      "played": 3,
       "wins": 1,
-      "losses": 1
+      "losses": 2
     },
     "valen": {
       "id": "valen",
       "name": "Valen",
-      "rating": 394,
-      "played": 2,
+      "rating": 342,
+      "played": 3,
       "wins": 1,
-      "losses": 1
+      "losses": 2
     },
     "rama": {
       "id": "rama",
       "name": "Rama",
-      "rating": 350,
-      "played": 2,
+      "rating": 318,
+      "played": 3,
       "wins": 1,
-      "losses": 1
+      "losses": 2
     },
     "seba": {
       "id": "seba",
       "name": "Seba",
-      "rating": 302,
-      "played": 2,
-      "wins": 1,
+      "rating": 354,
+      "played": 3,
+      "wins": 2,
       "losses": 1
     }
   },
-  "activeMatch": {
-    "id": "ef455913-bf9d-40f4-82a3-44d3adbeea24",
-    "createdAt": "2026-06-06T03:38:49.175Z",
-    "teamA": [
-      "nico",
-      "seba",
-      "scrava"
-    ],
-    "teamB": [
-      "rama",
-      "valen",
-      "gaspe"
-    ],
-    "picaPairs": [
-      {
-        "a": "seba",
-        "b": "valen"
-      },
-      {
-        "a": "nico",
-        "b": "gaspe"
-      },
-      {
-        "a": "scrava",
-        "b": "rama"
-      }
-    ],
-    "scoreA": 30,
-    "scoreB": 9,
-    "nextRoundType": "finalizado",
-    "hasReachedFive": true,
-    "picaLoadedInTurn": false,
-    "rounds": [
-      {
-        "id": "644d1775-cc6b-477f-8323-87dd5f8023b7",
-        "type": "redonda",
-        "createdAt": "2026-06-06T03:41:18.957Z",
-        "team": "B",
-        "points": 1,
-        "previous": {
-          "scoreA": 0,
-          "scoreB": 0,
-          "nextRoundType": "redonda",
-          "hasReachedFive": false,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "bf040e0a-9604-45f7-b3b7-9e08444091d1",
-        "type": "redonda",
-        "createdAt": "2026-06-06T03:41:21.131Z",
-        "team": "B",
-        "points": 1,
-        "previous": {
-          "scoreA": 0,
-          "scoreB": 1,
-          "nextRoundType": "redonda",
-          "hasReachedFive": false,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "c0040ff8-413f-4a94-8c0c-840bedbc1ae8",
-        "type": "redonda",
-        "createdAt": "2026-06-06T03:41:21.318Z",
-        "team": "B",
-        "points": 1,
-        "previous": {
-          "scoreA": 0,
-          "scoreB": 2,
-          "nextRoundType": "redonda",
-          "hasReachedFive": false,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "cea95823-9bf3-4a41-90ed-41882b273531",
-        "type": "redonda",
-        "createdAt": "2026-06-06T03:41:21.515Z",
-        "team": "B",
-        "points": 1,
-        "previous": {
-          "scoreA": 0,
-          "scoreB": 3,
-          "nextRoundType": "redonda",
-          "hasReachedFive": false,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "88c031a0-3da4-4774-9474-a200e218b7fe",
-        "type": "redonda",
-        "createdAt": "2026-06-06T03:41:21.717Z",
-        "team": "B",
-        "points": 1,
-        "previous": {
-          "scoreA": 0,
-          "scoreB": 4,
-          "nextRoundType": "redonda",
-          "hasReachedFive": false,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "74df73eb-52a6-475f-a7eb-4b5ebd330470",
-        "type": "redonda",
-        "createdAt": "2026-06-06T03:41:21.950Z",
-        "team": "B",
-        "points": 1,
-        "previous": {
-          "scoreA": 0,
-          "scoreB": 5,
-          "nextRoundType": "redonda",
-          "hasReachedFive": false,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "9aeca10b-c811-4bb7-8b7e-4a2598493fe9",
-        "type": "correccion",
-        "createdAt": "2026-06-06T03:41:25.772Z",
-        "team": "B",
-        "points": -1,
-        "previous": {
-          "scoreA": 0,
-          "scoreB": 6,
-          "nextRoundType": "redonda",
-          "hasReachedFive": false,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "c0794b75-459f-4622-817d-d8dedda317b8",
-        "type": "siguiente-ronda",
-        "createdAt": "2026-06-06T03:41:31.807Z",
-        "from": "redonda",
-        "to": "pica-pica",
-        "previous": {
-          "scoreA": 0,
-          "scoreB": 5,
-          "nextRoundType": "redonda",
-          "hasReachedFive": false,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "91c2b3f7-0c34-4226-8511-e73aa5e03663",
-        "type": "pica-pica",
-        "createdAt": "2026-06-06T03:41:44.321Z",
-        "duels": [
-          {
-            "playerA": "seba",
-            "playerB": "valen",
-            "pointsA": 2,
-            "pointsB": 0
-          },
-          {
-            "playerA": "nico",
-            "playerB": "gaspe",
-            "pointsA": 3,
-            "pointsB": 1
-          },
-          {
-            "playerA": "scrava",
-            "playerB": "rama",
-            "pointsA": 2,
-            "pointsB": 0
-          }
-        ],
-        "totalA": 7,
-        "totalB": 1,
-        "netWinner": "A",
-        "netPoints": 6,
-        "previous": {
-          "scoreA": 0,
-          "scoreB": 5,
-          "nextRoundType": "pica-pica",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "0482ceda-e73a-4af4-8ed1-af3c3e05d0fc",
-        "type": "siguiente-ronda",
-        "createdAt": "2026-06-06T04:14:02.137Z",
-        "from": "pica-pica",
-        "to": "redonda",
-        "previous": {
-          "scoreA": 6,
-          "scoreB": 5,
-          "nextRoundType": "pica-pica",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": true
-        }
-      },
-      {
-        "id": "8f01ae7c-942a-4294-8d25-eed84a76c78f",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:14:05.759Z",
-        "team": "B",
-        "points": 1,
-        "previous": {
-          "scoreA": 6,
-          "scoreB": 5,
-          "nextRoundType": "redonda",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "afceb935-f950-4c4c-bd4a-9ca842048a3c",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:14:05.948Z",
-        "team": "B",
-        "points": 1,
-        "previous": {
-          "scoreA": 6,
-          "scoreB": 6,
-          "nextRoundType": "redonda",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "c0182cfc-6c35-4023-960b-abbb84bd5eea",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:14:06.123Z",
-        "team": "B",
-        "points": 1,
-        "previous": {
-          "scoreA": 6,
-          "scoreB": 7,
-          "nextRoundType": "redonda",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "08b1aff3-7ddc-460c-8916-aa0c0d66b581",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:14:06.308Z",
-        "team": "B",
-        "points": 1,
-        "previous": {
-          "scoreA": 6,
-          "scoreB": 8,
-          "nextRoundType": "redonda",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "fe4502a1-8c33-47e8-a96b-f94e337c58de",
-        "type": "siguiente-ronda",
-        "createdAt": "2026-06-06T04:14:12.614Z",
-        "from": "redonda",
-        "to": "pica-pica",
-        "previous": {
-          "scoreA": 6,
-          "scoreB": 9,
-          "nextRoundType": "redonda",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "42d6db9b-1590-4c87-8123-6ba006d504c8",
-        "type": "pica-pica",
-        "createdAt": "2026-06-06T04:14:37.796Z",
-        "duels": [
-          {
-            "playerA": "seba",
-            "playerB": "valen",
-            "pointsA": 10,
-            "pointsB": 0
-          },
-          {
-            "playerA": "nico",
-            "playerB": "gaspe",
-            "pointsA": 10,
-            "pointsB": 0
-          },
-          {
-            "playerA": "scrava",
-            "playerB": "rama",
-            "pointsA": 0,
-            "pointsB": 0
-          }
-        ],
-        "totalA": 20,
-        "totalB": 0,
-        "netWinner": "A",
-        "netPoints": 20,
-        "previous": {
-          "scoreA": 6,
-          "scoreB": 9,
-          "nextRoundType": "pica-pica",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "e6391e23-f5d6-430c-b661-d7eaeafca9a1",
-        "type": "siguiente-ronda",
-        "createdAt": "2026-06-06T04:14:48.962Z",
-        "from": "pica-pica",
-        "to": "redonda",
-        "previous": {
-          "scoreA": 26,
-          "scoreB": 9,
-          "nextRoundType": "pica-pica",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": true
-        }
-      },
-      {
-        "id": "2dac3612-40ee-4710-9d07-7ed2ea4cda71",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:15:03.214Z",
-        "team": "A",
-        "points": 1,
-        "previous": {
-          "scoreA": 26,
-          "scoreB": 9,
-          "nextRoundType": "redonda",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "b2d2f4ae-aece-4d05-b606-fe21e7117445",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:15:03.717Z",
-        "team": "A",
-        "points": 1,
-        "previous": {
-          "scoreA": 27,
-          "scoreB": 9,
-          "nextRoundType": "redonda",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "cf29f3de-1f66-4f9b-a465-94e53dd183bd",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:15:03.924Z",
-        "team": "A",
-        "points": 1,
-        "previous": {
-          "scoreA": 28,
-          "scoreB": 9,
-          "nextRoundType": "redonda",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "c1eafde1-5ab8-4415-9d69-2b129cd948f6",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:15:04.103Z",
-        "team": "A",
-        "points": 1,
-        "previous": {
-          "scoreA": 29,
-          "scoreB": 9,
-          "nextRoundType": "redonda",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "94400160-5bfa-4e6f-b86b-11417407486d",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:15:04.151Z",
-        "team": "A",
-        "points": 1,
-        "previous": {
-          "scoreA": 30,
-          "scoreB": 9,
-          "nextRoundType": "finalizado",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "0f39543a-388e-446d-940b-db7dc0989205",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:15:04.325Z",
-        "team": "A",
-        "points": 1,
-        "previous": {
-          "scoreA": 30,
-          "scoreB": 9,
-          "nextRoundType": "finalizado",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "c6301794-21d0-45d7-9660-8197e33087a1",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:15:04.541Z",
-        "team": "A",
-        "points": 1,
-        "previous": {
-          "scoreA": 30,
-          "scoreB": 9,
-          "nextRoundType": "finalizado",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "b30dd5e0-45ac-4887-9620-7d95c8142833",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:15:04.757Z",
-        "team": "A",
-        "points": 1,
-        "previous": {
-          "scoreA": 30,
-          "scoreB": 9,
-          "nextRoundType": "finalizado",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "cd743749-a694-44f6-8f6d-0fd9fbe108a4",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:15:04.961Z",
-        "team": "A",
-        "points": 1,
-        "previous": {
-          "scoreA": 30,
-          "scoreB": 9,
-          "nextRoundType": "finalizado",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      },
-      {
-        "id": "a9ee046d-cbb7-4de1-ae26-22d693205459",
-        "type": "redonda",
-        "createdAt": "2026-06-06T04:15:05.150Z",
-        "team": "A",
-        "points": 1,
-        "previous": {
-          "scoreA": 30,
-          "scoreB": 9,
-          "nextRoundType": "finalizado",
-          "hasReachedFive": true,
-          "picaLoadedInTurn": false
-        }
-      }
-    ]
-  },
+  "activeMatch": null,
   "matches": [
+    {
+      "id": "ef455913-bf9d-40f4-82a3-44d3adbeea24",
+      "createdAt": "2026-06-06T03:38:49.175Z",
+      "teamA": [
+        "nico",
+        "seba",
+        "scrava"
+      ],
+      "teamB": [
+        "rama",
+        "valen",
+        "gaspe"
+      ],
+      "picaPairs": [
+        {
+          "a": "seba",
+          "b": "valen"
+        },
+        {
+          "a": "nico",
+          "b": "gaspe"
+        },
+        {
+          "a": "scrava",
+          "b": "rama"
+        }
+      ],
+      "scoreA": 30,
+      "scoreB": 9,
+      "nextRoundType": "finalizado",
+      "hasReachedFive": true,
+      "picaLoadedInTurn": false,
+      "rounds": [
+        {
+          "id": "644d1775-cc6b-477f-8323-87dd5f8023b7",
+          "type": "redonda",
+          "createdAt": "2026-06-06T03:41:18.957Z",
+          "team": "B",
+          "points": 1,
+          "previous": {
+            "scoreA": 0,
+            "scoreB": 0,
+            "nextRoundType": "redonda",
+            "hasReachedFive": false,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "bf040e0a-9604-45f7-b3b7-9e08444091d1",
+          "type": "redonda",
+          "createdAt": "2026-06-06T03:41:21.131Z",
+          "team": "B",
+          "points": 1,
+          "previous": {
+            "scoreA": 0,
+            "scoreB": 1,
+            "nextRoundType": "redonda",
+            "hasReachedFive": false,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "c0040ff8-413f-4a94-8c0c-840bedbc1ae8",
+          "type": "redonda",
+          "createdAt": "2026-06-06T03:41:21.318Z",
+          "team": "B",
+          "points": 1,
+          "previous": {
+            "scoreA": 0,
+            "scoreB": 2,
+            "nextRoundType": "redonda",
+            "hasReachedFive": false,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "cea95823-9bf3-4a41-90ed-41882b273531",
+          "type": "redonda",
+          "createdAt": "2026-06-06T03:41:21.515Z",
+          "team": "B",
+          "points": 1,
+          "previous": {
+            "scoreA": 0,
+            "scoreB": 3,
+            "nextRoundType": "redonda",
+            "hasReachedFive": false,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "88c031a0-3da4-4774-9474-a200e218b7fe",
+          "type": "redonda",
+          "createdAt": "2026-06-06T03:41:21.717Z",
+          "team": "B",
+          "points": 1,
+          "previous": {
+            "scoreA": 0,
+            "scoreB": 4,
+            "nextRoundType": "redonda",
+            "hasReachedFive": false,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "74df73eb-52a6-475f-a7eb-4b5ebd330470",
+          "type": "redonda",
+          "createdAt": "2026-06-06T03:41:21.950Z",
+          "team": "B",
+          "points": 1,
+          "previous": {
+            "scoreA": 0,
+            "scoreB": 5,
+            "nextRoundType": "redonda",
+            "hasReachedFive": false,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "9aeca10b-c811-4bb7-8b7e-4a2598493fe9",
+          "type": "correccion",
+          "createdAt": "2026-06-06T03:41:25.772Z",
+          "team": "B",
+          "points": -1,
+          "previous": {
+            "scoreA": 0,
+            "scoreB": 6,
+            "nextRoundType": "redonda",
+            "hasReachedFive": false,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "c0794b75-459f-4622-817d-d8dedda317b8",
+          "type": "siguiente-ronda",
+          "createdAt": "2026-06-06T03:41:31.807Z",
+          "from": "redonda",
+          "to": "pica-pica",
+          "previous": {
+            "scoreA": 0,
+            "scoreB": 5,
+            "nextRoundType": "redonda",
+            "hasReachedFive": false,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "91c2b3f7-0c34-4226-8511-e73aa5e03663",
+          "type": "pica-pica",
+          "createdAt": "2026-06-06T03:41:44.321Z",
+          "duels": [
+            {
+              "playerA": "seba",
+              "playerB": "valen",
+              "pointsA": 2,
+              "pointsB": 0
+            },
+            {
+              "playerA": "nico",
+              "playerB": "gaspe",
+              "pointsA": 3,
+              "pointsB": 1
+            },
+            {
+              "playerA": "scrava",
+              "playerB": "rama",
+              "pointsA": 2,
+              "pointsB": 0
+            }
+          ],
+          "totalA": 7,
+          "totalB": 1,
+          "netWinner": "A",
+          "netPoints": 6,
+          "previous": {
+            "scoreA": 0,
+            "scoreB": 5,
+            "nextRoundType": "pica-pica",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "0482ceda-e73a-4af4-8ed1-af3c3e05d0fc",
+          "type": "siguiente-ronda",
+          "createdAt": "2026-06-06T04:14:02.137Z",
+          "from": "pica-pica",
+          "to": "redonda",
+          "previous": {
+            "scoreA": 6,
+            "scoreB": 5,
+            "nextRoundType": "pica-pica",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": true
+          }
+        },
+        {
+          "id": "8f01ae7c-942a-4294-8d25-eed84a76c78f",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:14:05.759Z",
+          "team": "B",
+          "points": 1,
+          "previous": {
+            "scoreA": 6,
+            "scoreB": 5,
+            "nextRoundType": "redonda",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "afceb935-f950-4c4c-bd4a-9ca842048a3c",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:14:05.948Z",
+          "team": "B",
+          "points": 1,
+          "previous": {
+            "scoreA": 6,
+            "scoreB": 6,
+            "nextRoundType": "redonda",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "c0182cfc-6c35-4023-960b-abbb84bd5eea",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:14:06.123Z",
+          "team": "B",
+          "points": 1,
+          "previous": {
+            "scoreA": 6,
+            "scoreB": 7,
+            "nextRoundType": "redonda",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "08b1aff3-7ddc-460c-8916-aa0c0d66b581",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:14:06.308Z",
+          "team": "B",
+          "points": 1,
+          "previous": {
+            "scoreA": 6,
+            "scoreB": 8,
+            "nextRoundType": "redonda",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "fe4502a1-8c33-47e8-a96b-f94e337c58de",
+          "type": "siguiente-ronda",
+          "createdAt": "2026-06-06T04:14:12.614Z",
+          "from": "redonda",
+          "to": "pica-pica",
+          "previous": {
+            "scoreA": 6,
+            "scoreB": 9,
+            "nextRoundType": "redonda",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "42d6db9b-1590-4c87-8123-6ba006d504c8",
+          "type": "pica-pica",
+          "createdAt": "2026-06-06T04:14:37.796Z",
+          "duels": [
+            {
+              "playerA": "seba",
+              "playerB": "valen",
+              "pointsA": 10,
+              "pointsB": 0
+            },
+            {
+              "playerA": "nico",
+              "playerB": "gaspe",
+              "pointsA": 10,
+              "pointsB": 0
+            },
+            {
+              "playerA": "scrava",
+              "playerB": "rama",
+              "pointsA": 0,
+              "pointsB": 0
+            }
+          ],
+          "totalA": 20,
+          "totalB": 0,
+          "netWinner": "A",
+          "netPoints": 20,
+          "previous": {
+            "scoreA": 6,
+            "scoreB": 9,
+            "nextRoundType": "pica-pica",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "e6391e23-f5d6-430c-b661-d7eaeafca9a1",
+          "type": "siguiente-ronda",
+          "createdAt": "2026-06-06T04:14:48.962Z",
+          "from": "pica-pica",
+          "to": "redonda",
+          "previous": {
+            "scoreA": 26,
+            "scoreB": 9,
+            "nextRoundType": "pica-pica",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": true
+          }
+        },
+        {
+          "id": "2dac3612-40ee-4710-9d07-7ed2ea4cda71",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:15:03.214Z",
+          "team": "A",
+          "points": 1,
+          "previous": {
+            "scoreA": 26,
+            "scoreB": 9,
+            "nextRoundType": "redonda",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "b2d2f4ae-aece-4d05-b606-fe21e7117445",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:15:03.717Z",
+          "team": "A",
+          "points": 1,
+          "previous": {
+            "scoreA": 27,
+            "scoreB": 9,
+            "nextRoundType": "redonda",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "cf29f3de-1f66-4f9b-a465-94e53dd183bd",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:15:03.924Z",
+          "team": "A",
+          "points": 1,
+          "previous": {
+            "scoreA": 28,
+            "scoreB": 9,
+            "nextRoundType": "redonda",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "c1eafde1-5ab8-4415-9d69-2b129cd948f6",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:15:04.103Z",
+          "team": "A",
+          "points": 1,
+          "previous": {
+            "scoreA": 29,
+            "scoreB": 9,
+            "nextRoundType": "redonda",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "94400160-5bfa-4e6f-b86b-11417407486d",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:15:04.151Z",
+          "team": "A",
+          "points": 1,
+          "previous": {
+            "scoreA": 30,
+            "scoreB": 9,
+            "nextRoundType": "finalizado",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "0f39543a-388e-446d-940b-db7dc0989205",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:15:04.325Z",
+          "team": "A",
+          "points": 1,
+          "previous": {
+            "scoreA": 30,
+            "scoreB": 9,
+            "nextRoundType": "finalizado",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "c6301794-21d0-45d7-9660-8197e33087a1",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:15:04.541Z",
+          "team": "A",
+          "points": 1,
+          "previous": {
+            "scoreA": 30,
+            "scoreB": 9,
+            "nextRoundType": "finalizado",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "b30dd5e0-45ac-4887-9620-7d95c8142833",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:15:04.757Z",
+          "team": "A",
+          "points": 1,
+          "previous": {
+            "scoreA": 30,
+            "scoreB": 9,
+            "nextRoundType": "finalizado",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "cd743749-a694-44f6-8f6d-0fd9fbe108a4",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:15:04.961Z",
+          "team": "A",
+          "points": 1,
+          "previous": {
+            "scoreA": 30,
+            "scoreB": 9,
+            "nextRoundType": "finalizado",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        },
+        {
+          "id": "a9ee046d-cbb7-4de1-ae26-22d693205459",
+          "type": "redonda",
+          "createdAt": "2026-06-06T04:15:05.150Z",
+          "team": "A",
+          "points": 1,
+          "previous": {
+            "scoreA": 30,
+            "scoreB": 9,
+            "nextRoundType": "finalizado",
+            "hasReachedFive": true,
+            "picaLoadedInTurn": false
+          }
+        }
+      ],
+      "winner": "A",
+      "ratingChanges": {
+        "nico": 52,
+        "seba": 52,
+        "scrava": 32,
+        "rama": -32,
+        "valen": -52,
+        "gaspe": -52
+      },
+      "finishedAt": "2026-06-06T04:15:10.318Z",
+      "date": "2026-06-06"
+    },
     {
       "id": "b8c640f4-8a75-4413-9186-7105aa7adbf1",
       "createdAt": "2026-06-06T02:05:11.911Z",
@@ -1274,6 +1286,48 @@
       "points": {
         "nico": 9,
         "rama": 31
+      }
+    },
+    "seba__valen": {
+      "players": [
+        "seba",
+        "valen"
+      ],
+      "played": 2,
+      "wins": {
+        "seba": 2
+      },
+      "points": {
+        "seba": 12,
+        "valen": 0
+      }
+    },
+    "gaspe__nico": {
+      "players": [
+        "gaspe",
+        "nico"
+      ],
+      "played": 2,
+      "wins": {
+        "nico": 2
+      },
+      "points": {
+        "nico": 13,
+        "gaspe": 1
+      }
+    },
+    "rama__scrava": {
+      "players": [
+        "rama",
+        "scrava"
+      ],
+      "played": 2,
+      "wins": {
+        "scrava": 1
+      },
+      "points": {
+        "scrava": 2,
+        "rama": 0
       }
     }
   }
