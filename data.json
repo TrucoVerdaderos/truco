@@ -1,6 +1,6 @@
 {
-  "version": 47,
-  "updatedAt": "2026-06-06T04:14:06.379Z",
+  "version": 48,
+  "updatedAt": "2026-06-06T04:14:13.431Z",
   "players": {
     "nico": {
       "id": "nico",
@@ -80,7 +80,7 @@
     ],
     "scoreA": 6,
     "scoreB": 9,
-    "nextRoundType": "redonda",
+    "nextRoundType": "pica-pica",
     "hasReachedFive": true,
     "picaLoadedInTurn": false,
     "rounds": [
@@ -297,6 +297,20 @@
         "previous": {
           "scoreA": 6,
           "scoreB": 8,
+          "nextRoundType": "redonda",
+          "hasReachedFive": true,
+          "picaLoadedInTurn": false
+        }
+      },
+      {
+        "id": "fe4502a1-8c33-47e8-a96b-f94e337c58de",
+        "type": "siguiente-ronda",
+        "createdAt": "2026-06-06T04:14:12.614Z",
+        "from": "redonda",
+        "to": "pica-pica",
+        "previous": {
+          "scoreA": 6,
+          "scoreB": 9,
           "nextRoundType": "redonda",
           "hasReachedFive": true,
           "picaLoadedInTurn": false
