@@ -710,20 +710,64 @@ function renderStatus() {
   }
 }
 
+function normalizePlayerId(value) {
+  if (!value) return "";
+  const raw = String(value).trim().toLowerCase();
+  if (PLAYER_ORDER.includes(raw)) return raw;
+
+  const byName = Object.values(db?.players || {}).find(player => {
+    return String(player.name || "").trim().toLowerCase() === raw;
+  });
+  return byName?.id || raw;
+}
+
+function getRoundDuels(round) {
+  if (Array.isArray(round.duels)) return round.duels;
+  if (Array.isArray(round.picaDuels)) return round.picaDuels;
+  if (Array.isArray(round.matchups)) return round.matchups;
+  if (Array.isArray(round.pairs)) return round.pairs;
+  return [];
+}
+
+function readDuelNumber(duel, keys) {
+  for (const key of keys) {
+    if (duel[key] !== undefined && duel[key] !== null && duel[key] !== "") {
+      return Number(duel[key]) || 0;
+    }
+  }
+  return 0;
+}
+
+function normalizeDuel(duel) {
+  return {
+    playerA: normalizePlayerId(duel.playerA || duel.a || duel.left || duel.player1 || duel.playerAId || duel.local),
+    playerB: normalizePlayerId(duel.playerB || duel.b || duel.right || duel.player2 || duel.playerBId || duel.visitante),
+    pointsA: readDuelNumber(duel, ["pointsA", "scoreA", "aPoints", "points1", "puntosA", "localPoints"]),
+    pointsB: readDuelNumber(duel, ["pointsB", "scoreB", "bPoints", "points2", "puntosB", "visitantePoints"])
+  };
+}
+
 function getCurrentMatchPicaScore(match, pair) {
   const totals = { a: 0, b: 0 };
+  const pairA = normalizePlayerId(pair.a);
+  const pairB = normalizePlayerId(pair.b);
+
   for (const round of match.rounds || []) {
     if (round.type !== "pica-pica") continue;
-    for (const duel of round.duels || []) {
-      if (duel.playerA === pair.a && duel.playerB === pair.b) {
-        totals.a += Number(duel.pointsA) || 0;
-        totals.b += Number(duel.pointsB) || 0;
-      } else if (duel.playerA === pair.b && duel.playerB === pair.a) {
-        totals.a += Number(duel.pointsB) || 0;
-        totals.b += Number(duel.pointsA) || 0;
+
+    for (const rawDuel of getRoundDuels(round)) {
+      const duel = normalizeDuel(rawDuel);
+
+      if (duel.playerA === pairA && duel.playerB === pairB) {
+        totals.a += duel.pointsA;
+        totals.b += duel.pointsB;
+      } else if (duel.playerA === pairB && duel.playerB === pairA) {
+        totals.a += duel.pointsB;
+        totals.b += duel.pointsA;
       }
     }
   }
+
   return totals;
 }
 
